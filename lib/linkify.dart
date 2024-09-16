@@ -7,6 +7,8 @@ export 'package:linkify/src/user_tag.dart'
     show UserTagLinkifier, UserTagElement;
 export 'package:linkify/src/phone_number.dart'
     show PhoneNumberLinkifier, PhoneNumberElement;
+export 'package:linkify/src/code_block.dart'
+    show CodeBlockLinkifier, CodeBlockElement;
 
 abstract class LinkifyElement {
   final String text;
