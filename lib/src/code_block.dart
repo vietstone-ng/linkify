@@ -12,7 +12,9 @@ final _codeBlockRegex =
 // group(7) = ([^`\n]*) : inline-code inside single backticks
 
 class CodeBlockLinkifier extends Linkifier {
-  const CodeBlockLinkifier();
+  final bool printDebug;
+
+  const CodeBlockLinkifier({this.printDebug = false});
 
   @override
   List<LinkifyElement> parse(elements, options) {
@@ -27,17 +29,19 @@ class CodeBlockLinkifier extends Linkifier {
         } else {
           final text = element.text.replaceFirst(match.group(0)!, '');
 
-          print({
-            'group_1': match.group(1),
-            'group_2': match.group(2),
-            'group_3': match.group(3),
-            'group_4': match.group(4),
-            'group_5': match.group(5),
-            'group_6': match.group(6),
-            'group_7': match.group(7),
-          });
+          if (printDebug) {
+            print({
+              'group_1': match.group(1),
+              'group_2': match.group(2),
+              'group_3': match.group(3),
+              'group_4': match.group(4),
+              'group_5': match.group(5),
+              'group_6': match.group(6),
+              'group_7': match.group(7),
+            });
 
-          print('after text: $text');
+            print('after text: $text');
+          }
 
           final group_1 = match.group(1) ?? '';
           final group_3 = match.group(3) ?? '';
